@@ -1,10 +1,10 @@
 import Image from 'next/image'
-import React from 'react'
-import useWindowSize from '../custom-hooks/useWindowSize'
+
+import { useInView } from 'react-intersection-observer'
 
 const Skills = () => {
-	const windowSize = useWindowSize()
-	console.log(windowSize.width)
+	const { inView, ref } = useInView({ trackVisibility: true, delay: 100 })
+
 	const skills = [
 		{
 			title: 'React',
@@ -31,11 +31,17 @@ const Skills = () => {
 			image: '/graphql_icon.png',
 		},
 	]
+	console.log(inView)
 	return (
-		<div className='border-b border-black mx-4'>
+		<div className={`border-b border-black mx-4 `}>
 			<div className='grid gap-16 md:gap-24 lg:gap-32 w-full pb-16 md:pb-24 lg:pb-32 '>
 				<h2 className='text-5xl text-center'>Skills</h2>
-				<div className={`grid  grid-cols-2 lg:grid-cols-3 gap-8`}>
+				<div
+					className={`grid  grid-cols-2 lg:grid-cols-3 gap-8 opacity-0 transition-opacity ease-in duration-[2000ms] ${
+						inView ? 'visible opacity-100 ' : 'opacity-0'
+					}`}
+					ref={ref}
+				>
 					{skills.map((skill) => {
 						return (
 							<div className='grid text-center gap-8 '>
@@ -48,7 +54,7 @@ const Skills = () => {
 										/>
 									</div>
 								</div>
-								<h4>{skill.title}</h4>
+								<h4 className=''>{skill.title}</h4>
 							</div>
 						)
 					})}
