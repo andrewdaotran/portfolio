@@ -1,7 +1,6 @@
 import { MenuAlt4Icon } from '@heroicons/react/outline'
 import { Icon } from 'react-icons-kit'
 import { github } from 'react-icons-kit/fa/github'
-// import { navicon } from 'react-icons-kit/fa/navicon'
 import { menu } from 'react-icons-kit/entypo/menu'
 import { linkedinSquare } from 'react-icons-kit/fa/linkedinSquare'
 import { circle } from 'react-icons-kit/fa/circle'
@@ -12,11 +11,6 @@ import NavbarStatusContext from '../context/navbarStatusContext'
 import { NavbarStatusContextTypes } from '../typings'
 import Link from 'next/link'
 
-interface NavStatus {
-	page: boolean
-	status: boolean
-}
-
 const Navbar = () => {
 	const {
 		homeStatus,
@@ -26,6 +20,46 @@ const Navbar = () => {
 		setPortfolioStatus,
 		setAboutMeStatus,
 	} = useContext<NavbarStatusContextTypes>(NavbarStatusContext)
+
+	const links = [
+		{
+			title: 'linkedIn',
+			link: 'https://www.linkedin.com/in/ndru/',
+			icon: linkedinSquare,
+		},
+		{
+			title: 'github',
+			link: 'https://github.com/andrewdaotran',
+			icon: github,
+		},
+	]
+
+	const navigation = [
+		{
+			title: 'HOME',
+			onMouseEnter: () => setHomeStatus({ ...homeStatus, status: true }),
+			onMouseLeave: () => {
+				if (!homeStatus.page) setHomeStatus({ ...homeStatus, status: false })
+			},
+		},
+		{
+			title: 'PORTFOLIO',
+			onMouseEnter: () =>
+				setPortfolioStatus({ ...portfolioStatus, status: true }),
+			onMouseLeave: () => {
+				if (!portfolioStatus.page)
+					setPortfolioStatus({ ...portfolioStatus, status: false })
+			},
+		},
+		{
+			title: 'ABOUT ME',
+			onMouseEnter: () => setAboutMeStatus({ ...aboutMeStatus, status: true }),
+			onMouseLeave: () => {
+				if (!portfolioStatus.page)
+					setAboutMeStatus({ ...aboutMeStatus, status: false })
+			},
+		},
+	]
 
 	const [menuClicked, setMenuClicked] = useState<boolean>(false)
 
@@ -43,78 +77,39 @@ const Navbar = () => {
 					</h3>
 				) : (
 					<div className='flex col-start-1 col-end-2 justify-between w-[20rem] mt-[1.75rem]'>
-						<div
-							className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
-							onMouseEnter={() =>
-								setHomeStatus({ ...homeStatus, status: true })
-							}
-							onMouseLeave={() => {
-								if (!homeStatus.page)
-									setHomeStatus({ ...homeStatus, status: false })
-							}}
-						>
-							<h3 className='w-fit '>HOME</h3>
+						{navigation.map((link) => {
+							return (
+								<div
+									className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
+									onMouseEnter={link.onMouseEnter}
+									onMouseLeave={link.onMouseLeave}
+								>
+									<h3 className='w-fit '>{link.title}</h3>
 
-							<Icon
-								icon={circle}
-								size={6}
-								className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
-							/>
-						</div>
-						<div
-							className='group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
-							onMouseEnter={() =>
-								setPortfolioStatus({ ...portfolioStatus, status: true })
-							}
-							onMouseLeave={() => {
-								if (!portfolioStatus.page)
-									setPortfolioStatus({ ...portfolioStatus, status: false })
-							}}
-						>
-							<h3 className='w-fit '>PORTFOLIO</h3>
-							<Icon
-								icon={circle}
-								size={6}
-								className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
-							/>
-						</div>
-						<div
-							className='group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer'
-							onMouseEnter={() =>
-								setAboutMeStatus({ ...aboutMeStatus, status: true })
-							}
-							onMouseLeave={() => {
-								if (!portfolioStatus.page)
-									setAboutMeStatus({ ...aboutMeStatus, status: false })
-							}}
-						>
-							<h3 className='w-fit '>ABOUT ME</h3>
-							<Icon
-								icon={circle}
-								size={6}
-								className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
-							/>
-						</div>
+									<Icon
+										icon={circle}
+										size={6}
+										className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
+									/>
+								</div>
+							)
+						})}
 					</div>
 				)}
-
 				<h3 className='  text-center col-start-2 col-end-3 '>ndru</h3>
 				{windowSize.width > 767 && (
 					<div className='flex gap-8 col-start-3 col-end-4  w-fit justify-self-end'>
-						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
-							<Link href={'https://www.linkedin.com/in/ndru/'}>
-								<a target='_blank' rel='noopener noreferrer'>
-									<Icon icon={linkedinSquare} size={25} />
-								</a>
-							</Link>
-						</h3>
-						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
-							<Link href={'https://github.com/andrewdaotran'}>
-								<a target='_blank' rel='noopener noreferrer'>
-									<Icon icon={github} size={25} />
-								</a>
-							</Link>
-						</h3>
+						{links.map((link) => {
+							return (
+								<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
+									<Link href={link.link}>
+										<a target='_blank' rel='noopener noreferrer'>
+											<Icon icon={link.icon} size={25} />
+										</a>
+									</Link>
+								</h3>
+							)
+						})}
 					</div>
 				)}
 			</div>
