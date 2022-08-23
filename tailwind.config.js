@@ -8,6 +8,10 @@ module.exports = {
 		extend: {
 			colors: {
 				mainOrange: 'rgb(250,69,42)',
+				accentGrey: 'rgb(208, 208, 208)',
+			},
+			fontFamily: {
+				playFair: ['Playfair Display'],
 			},
 		},
 	},
