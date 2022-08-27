@@ -30,7 +30,7 @@ const ProjectSingleLarge = ({ project, shown, setShown, index }: Props) => {
 		if (!shown && inView) {
 			setShown(true)
 		}
-	}, [inView])
+	}, [inView, shown])
 	return (
 		<div
 			className={` grid gap-4 relative mx-auto w-full h-auto px-16 opacity-0 transition-opacity ease-in duration-[2000ms] ${
