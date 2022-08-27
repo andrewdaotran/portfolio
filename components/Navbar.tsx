@@ -7,7 +7,7 @@ import { circle } from 'react-icons-kit/fa/circle'
 import { useContext, useState } from 'react'
 
 import useWindowSize from '../custom-hooks/useWindowSize'
-import NavbarStatusContext from '../context/navbarStatusContext'
+import NavbarStatusContext from '../context/NavbarStatusContext'
 import { NavbarStatusContextTypes } from '../typings'
 import Link from 'next/link'
 

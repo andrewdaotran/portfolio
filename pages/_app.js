@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
-import { NavbarStatusProvider } from '../context/navbarStatusContext'
+import { NavbarStatusProvider } from '../context/NavbarStatusContext'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
