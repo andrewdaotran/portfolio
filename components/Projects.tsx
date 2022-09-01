@@ -1,4 +1,3 @@
-import React, { Fragment } from 'react'
 import useWindowSize from '../custom-hooks/useWindowSize'
 import ProjectSingleLarge from './ProjectSingleLarge'
 import ProjectSingleSmall from './ProjectSingleSmall'

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Dispatch, useEffect, useState } from 'react'
+import { Dispatch, useEffect } from 'react'
 import { Icon } from 'react-icons-kit'
 import { externalLink } from 'react-icons-kit/fa/externalLink'
 import { github } from 'react-icons-kit/fa/github'
@@ -38,22 +38,73 @@ const ProjectSingleLarge = ({ project, shown, setShown, index }: Props) => {
 			}`}
 			ref={ref}
 		>
-			<div className={`grid ${index % 2 === 0 && 'justify-items-end'}`}>
-				<h4 className='text-sm lg:text-lg xl:text-xl'>Featured Project</h4>
-				<h3 className='font-bold text-lg lg:text-2xl xl:text-3xl'>
-					{project.title}
-				</h3>
-			</div>
-			<div className='relative grid grid-cols-5 '>
+			<div className='relative grid grid-cols-5'>
+				{/* Absolute Overlay */}
 				<div
-					className={`absolute bg-lightGrey h-fit w-[60%] z-10 top-0 bottom-0 ${
+					className={`absolute  h-fit w-[60%] lg:w-[50%] z-10 top-0 bottom-0 my-auto grid gap-4 lg:gap-8 ${
 						index % 2 === 0 ? 'right-0' : 'left-0'
-					} my-auto p-4 rounded-md`}
+					} `}
 				>
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-						totam quisquam dolor, porro sed voluptates.
-					</p>
+					<div className={`grid ${index % 2 === 0 && 'justify-items-end'}`}>
+						<h4 className='text-sm lg:text-lg xl:text-xl'>Featured Project</h4>
+						<h3 className='font-bold text-lg lg:text-2xl xl:text-3xl'>
+							{project.title}
+						</h3>
+					</div>
+
+					<div className='bg-lightGrey  p-4 rounded-md'>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
+							totam quisquam dolor, porro sed voluptates.
+						</p>
+					</div>
+					<div
+						className={`flex gap-4 flex-wrap text-xs lg:text-lg xl:text-xl ${
+							index % 2 === 0 ? 'justify-end' : 'justify-start'
+						}`}
+					>
+						{project.technologies.map((technology) => {
+							return (
+								<p className='' key={technology}>
+									{technology}
+								</p>
+							)
+						})}
+					</div>
+					<div
+						className={`flex gap-6 ${
+							index % 2 === 0 ? 'justify-end' : 'justify-start'
+						}`}
+					>
+						<Link href={`/`}>
+							<a>
+								<Icon
+									icon={github}
+									size={
+										windowSize.width < 1024
+											? 25
+											: windowSize.width < 1280
+											? 30
+											: 35
+									}
+								/>
+							</a>
+						</Link>
+						<Link href={`/`}>
+							<a>
+								<Icon
+									icon={externalLink}
+									size={
+										windowSize.width < 1024
+											? 25
+											: windowSize.width < 1280
+											? 30
+											: 35
+									}
+								/>
+							</a>
+						</Link>
+					</div>
 				</div>
 				{/* <Link href={'/'}> */}
 				<div
@@ -69,45 +120,7 @@ const ProjectSingleLarge = ({ project, shown, setShown, index }: Props) => {
 				</div>
 				{/* </Link> */}
 			</div>
-			<div
-				className={`flex gap-4 flex-wrap text-xs lg:text-lg xl:text-xl ${
-					index % 2 === 0 ? 'justify-end' : 'justify-start'
-				}`}
-			>
-				{project.technologies.map((technology) => {
-					return (
-						<p className='' key={technology}>
-							{technology}
-						</p>
-					)
-				})}
-			</div>
-			<div
-				className={`flex gap-6 ${
-					index % 2 === 0 ? 'justify-end' : 'justify-start'
-				}`}
-			>
-				<Link href={`/`}>
-					<a>
-						<Icon
-							icon={github}
-							size={
-								windowSize.width < 1024 ? 25 : windowSize.width < 1280 ? 30 : 35
-							}
-						/>
-					</a>
-				</Link>
-				<Link href={`/`}>
-					<a>
-						<Icon
-							icon={externalLink}
-							size={
-								windowSize.width < 1024 ? 25 : windowSize.width < 1280 ? 30 : 35
-							}
-						/>
-					</a>
-				</Link>
-			</div>
+			{/*Absolute Overlay End */}
 		</div>
 	)
 }

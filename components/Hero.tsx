@@ -1,12 +1,15 @@
 import Image from 'next/image'
-import React from 'react'
+import useWindowSize from '../custom-hooks/useWindowSize'
+import BackgroundSingle from './BackgroundSingle'
 
 const Hero = () => {
+	const windowSize = useWindowSize()
+
 	const leftInformation = [
 		{
 			title: 'BIOGRAPHY',
 			content: [
-				'	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, temporibus?',
+				'	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, temporibus? more words please',
 			],
 		},
 		{
@@ -22,10 +25,10 @@ const Hero = () => {
 				<h1>Front End React Developer </h1>
 				<h1>Based in OC</h1>
 			</div>
-			<div className='grid grid-cols-4'>
+			<div className='grid grid-cols-12 gap-y-16 gap-x-2 sm:gap-x-4 md:gap-x-8 xl:gap-x-10 xl:gap-y-0'>
 				{/* Image */}
-				<div className='w-fit border border-accentGrey mx-auto p-6 md:p-8 lg:p-12 rounded-full col-start-1 col-end-5'>
-					<div className='w-[16rem] h-[24rem] md:w-[28rem] md:h-[42rem]  lg:w-[40rem] lg:h-[60rem] relative '>
+				<div className='w-fit border border-accentGrey mx-auto p-6 sm:p-11   rounded-full col-start-1 col-end-13 xl:col-start-4 xl:col-end-10 '>
+					<div className='w-[76vw] h-[114vw] md:w-[38rem] md:h-[57rem] xl:w-[32rem] xl:h-[48rem] max-w-[32rem]  max-h-[48rem] relative '>
 						<Image
 							src={'/portfolio-image.jpeg'}
 							layout='fill'
@@ -36,20 +39,18 @@ const Hero = () => {
 				{/* Information */}
 
 				{/* Left */}
-				<div className='grid gap-12'>
+				<div className='grid gap-12 sm:gap-24 col-start-1 col-end-7   xl:col-end-4 xl:row-start-1 items-center '>
 					{leftInformation.map((info) => {
 						return (
-							<div
-								className='grid col-start-1 col-end-2 gap-8'
-								key={info.title}
-							>
-								<h3 className='text-accentGrey'>{info.title}</h3>
-								<div className=''>
-									{info.content.map((paragraph) => {
-										return <p key={paragraph}>{paragraph}</p>
-									})}
-								</div>
-							</div>
+							<BackgroundSingle info={info} key={info.title} isLeft={true} />
+						)
+					})}
+				</div>
+				{/* Right */}
+				<div className='grid gap-12 sm:gap-24 col-start-7 col-end-13 xl:col-start-10 items-center '>
+					{leftInformation.map((info) => {
+						return (
+							<BackgroundSingle info={info} isLeft={false} key={info.title} />
 						)
 					})}
 				</div>
