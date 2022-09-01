@@ -1,11 +1,6 @@
-import useWindowSize from '../custom-hooks/useWindowSize'
-import ProjectSingleLarge from './ProjectSingleLarge'
-import ProjectSingleSmall from './ProjectSingleSmall'
-import { useState } from 'react'
+import ProjectSingle from './ProjectSingle'
 
 const Projects = () => {
-	const windowSize = useWindowSize()
-	const [shown, setShown] = useState<boolean>(false)
 	const projects = [
 		{
 			title: 'Find My Pet',
@@ -54,24 +49,16 @@ const Projects = () => {
 			technologies: ['NextJS', 'TailwindCSS'],
 		},
 	]
+	console.log('hello')
 	return (
 		<div className={`border-b border-black mx-4 `}>
 			<div className='grid gap-16 md:gap-24 lg:gap-32 w-full pb-16 md:pb-24 lg:pb-32 '>
 				<h2 className='text-5xl text-center'>Projects</h2>
 				{projects.map((project, index) => {
-					return windowSize.width < 640 ? (
-						<ProjectSingleSmall
+					return (
+						<ProjectSingle
 							project={project}
 							key={project.title}
-							shown={shown}
-							setShown={setShown}
-						/>
-					) : (
-						<ProjectSingleLarge
-							project={project}
-							key={project.title}
-							shown={shown}
-							setShown={setShown}
 							index={index}
 						/>
 					)
