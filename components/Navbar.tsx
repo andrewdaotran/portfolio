@@ -5,6 +5,7 @@ import { menu } from 'react-icons-kit/entypo/menu'
 import { linkedinSquare } from 'react-icons-kit/fa/linkedinSquare'
 import { circle } from 'react-icons-kit/fa/circle'
 import { useContext, useState } from 'react'
+import * as Scroll from 'react-scroll'
 
 import useWindowSize from '../custom-hooks/useWindowSize'
 import NavbarStatusContext from '../context/NavbarStatusContext'
@@ -41,6 +42,16 @@ const Navbar = ({ children }) => {
 			onMouseLeave: () => {
 				if (!homeStatus.page) setHomeStatus({ ...homeStatus, status: false })
 			},
+			linkTo: 'home',
+		},
+		{
+			title: 'ABOUT ME',
+			onMouseEnter: () => setAboutMeStatus({ ...aboutMeStatus, status: true }),
+			onMouseLeave: () => {
+				if (!portfolioStatus.page)
+					setAboutMeStatus({ ...aboutMeStatus, status: false })
+			},
+			linkTo: 'about-me',
 		},
 		{
 			title: 'PORTFOLIO',
@@ -50,14 +61,7 @@ const Navbar = ({ children }) => {
 				if (!portfolioStatus.page)
 					setPortfolioStatus({ ...portfolioStatus, status: false })
 			},
-		},
-		{
-			title: 'ABOUT ME',
-			onMouseEnter: () => setAboutMeStatus({ ...aboutMeStatus, status: true }),
-			onMouseLeave: () => {
-				if (!portfolioStatus.page)
-					setAboutMeStatus({ ...aboutMeStatus, status: false })
-			},
+			linkTo: 'portfolio',
 		},
 	]
 
@@ -66,20 +70,20 @@ const Navbar = ({ children }) => {
 	const windowSize = useWindowSize()
 	return (
 		<>
-			<div className=' '>
-				<div
-					className={` ${
-						windowSize.width < 1024 ? 'py-[3.75rem]' : 'py-14'
-					}  px-4 grid grid-cols-3  items-center `}
-				>
-					{windowSize.width < 1024 ? (
-						<h3 className='h-10 w-10 col-start-1 col-end-2 hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '>
-							<Icon icon={menu} size={30} />
-						</h3>
-					) : (
-						<div className='flex col-start-1 col-end-2 justify-between w-[20rem] mt-[1.75rem]'>
-							{navigation.map((link) => {
-								return (
+			<div
+				className={` ${
+					windowSize.width < 1024 ? 'py-[3.75rem]' : 'py-14'
+				}  px-4 grid grid-cols-3  items-center `}
+			>
+				{windowSize.width < 1024 ? (
+					<h3 className='h-10 w-10 col-start-1 col-end-2 hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '>
+						<Icon icon={menu} size={30} />
+					</h3>
+				) : (
+					<div className='flex col-start-1 col-end-2 justify-between w-[20rem] mt-[1.75rem] z-20'>
+						{navigation.map((link) => {
+							return (
+								<Scroll.Link to={link.linkTo} smooth={true} duration={1000}>
 									<div
 										className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
 										onMouseEnter={link.onMouseEnter}
@@ -94,31 +98,32 @@ const Navbar = ({ children }) => {
 											className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
 										/>
 									</div>
-								)
-							})}
-						</div>
-					)}
-					<h3 className='  text-center col-start-2 col-end-3 '>ndru</h3>
-					{windowSize.width > 767 && (
-						<div className='flex gap-8 col-start-3 col-end-4  w-fit justify-self-end'>
-							{links.map((link) => {
-								return (
-									<h3
-										className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'
-										key={link.title}
-									>
-										<Link href={link.link}>
-											<a target='_blank' rel='noopener noreferrer'>
-												<Icon icon={link.icon} size={25} />
-											</a>
-										</Link>
-									</h3>
-								)
-							})}
-						</div>
-					)}
-				</div>
+								</Scroll.Link>
+							)
+						})}
+					</div>
+				)}
+				<h3 className='  text-center col-start-2 col-end-3 '>ndru</h3>
+				{windowSize.width > 767 && (
+					<div className='flex gap-8 col-start-3 col-end-4  w-fit justify-self-end'>
+						{links.map((link) => {
+							return (
+								<h3
+									className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 z-20'
+									key={link.title}
+								>
+									<Link href={link.link}>
+										<a target='_blank' rel='noopener noreferrer'>
+											<Icon icon={link.icon} size={25} />
+										</a>
+									</Link>
+								</h3>
+							)
+						})}
+					</div>
+				)}
 			</div>
+
 			{children}
 		</>
 	)

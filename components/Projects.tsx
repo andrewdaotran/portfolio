@@ -1,3 +1,4 @@
+import ProjectPopup from './ProjectPopup'
 import ProjectSingle from './ProjectSingle'
 
 const Projects = () => {
@@ -49,11 +50,13 @@ const Projects = () => {
 			technologies: ['NextJS', 'TailwindCSS'],
 		},
 	]
-	console.log('hello')
 	return (
-		<div className={`border-b border-black mx-4 `}>
+		<div className={`border-b border-black mx-4 relative`}>
+			<ProjectPopup />
 			<div className='grid gap-16 md:gap-24 lg:gap-32 w-full pb-16 md:pb-24 lg:pb-32 '>
-				<h2 className='text-5xl text-center'>Projects</h2>
+				<h2 className='text-5xl text-center pt-16 mt-[-4rem]' id='portfolio'>
+					Projects
+				</h2>
 				{projects.map((project, index) => {
 					return (
 						<ProjectSingle

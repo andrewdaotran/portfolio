@@ -39,7 +39,7 @@ const ProjectSingle = ({ project, index }: Props) => {
 					: windowSize.width > 500
 					? 'h-[65vw]'
 					: 'h-[90vw]'
-			}  w-[90vw] sm:w-[90vw] sm:h-[60vw]  shadow-lg   relative mx-auto opacity-0 transition-opacity ease-in duration-[2000ms] ${
+			}  w-[90vw] sm:w-[90vw] sm:h-[60vw]  shadow-lg   relative mx-auto opacity-0 transition-opacity ease-in duration-[2000ms] relative ${
 				shown && 'visible opacity-100 '
 			}`}
 			ref={ref}
@@ -54,8 +54,10 @@ const ProjectSingle = ({ project, index }: Props) => {
 			{/* Absolute Description */}
 			<div className='absolute p-8 grid gap-6 top-0 bottom-0 my-auto'>
 				<div className=''>
-					<h4 className='text-sm'>Featured Project</h4>
-					<h3 className='font-bold text-2xl'>{project.title}</h3>
+					<h4 className='text-sm '>Featured Project</h4>
+					<h3 className='font-bold text-2xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
+						{project.title}
+					</h3>
 				</div>
 				<p>
 					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
@@ -71,16 +73,20 @@ const ProjectSingle = ({ project, index }: Props) => {
 					})}
 				</div>
 				<div className='flex gap-6'>
-					<Link href={`/`}>
-						<a>
-							<Icon icon={github} size={25} />
-						</a>
-					</Link>
-					<Link href={`/`}>
-						<a>
-							<Icon icon={externalLink} size={23} />
-						</a>
-					</Link>
+					<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+						<Link href={`/`}>
+							<a target='_blank' rel='noopener noreferrer'>
+								<Icon icon={github} size={25} />
+							</a>
+						</Link>
+					</h3>
+					<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+						<Link href={`/`}>
+							<a target='_blank' rel='noopener noreferrer'>
+								<Icon icon={externalLink} size={25} />
+							</a>
+						</Link>
+					</h3>
 				</div>
 			</div>
 		</div>
@@ -101,7 +107,7 @@ const ProjectSingle = ({ project, index }: Props) => {
 				>
 					<div className={`grid ${index % 2 === 0 && 'justify-items-end'}`}>
 						<h4 className='text-sm lg:text-lg xl:text-xl'>Featured Project</h4>
-						<h3 className='font-bold text-lg lg:text-2xl xl:text-3xl'>
+						<h3 className='font-bold text-lg lg:text-2xl xl:text-3xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
 							{project.title}
 						</h3>
 					</div>
@@ -130,34 +136,38 @@ const ProjectSingle = ({ project, index }: Props) => {
 							index % 2 === 0 ? 'justify-end' : 'justify-start'
 						}`}
 					>
-						<Link href={`/`}>
-							<a>
-								<Icon
-									icon={github}
-									size={
-										windowSize.width < 1024
-											? 25
-											: windowSize.width < 1280
-											? 30
-											: 35
-									}
-								/>
-							</a>
-						</Link>
-						<Link href={`/`}>
-							<a>
-								<Icon
-									icon={externalLink}
-									size={
-										windowSize.width < 1024
-											? 25
-											: windowSize.width < 1280
-											? 30
-											: 35
-									}
-								/>
-							</a>
-						</Link>
+						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+							<Link href={`/`}>
+								<a>
+									<Icon
+										icon={github}
+										size={
+											windowSize.width < 1024
+												? 25
+												: windowSize.width < 1280
+												? 30
+												: 35
+										}
+									/>
+								</a>
+							</Link>
+						</h3>
+						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+							<Link href={`/`}>
+								<a>
+									<Icon
+										icon={externalLink}
+										size={
+											windowSize.width < 1024
+												? 25
+												: windowSize.width < 1280
+												? 30
+												: 35
+										}
+									/>
+								</a>
+							</Link>
+						</h3>
 					</div>
 				</div>
 				{/* <Link href={'/'}> */}
