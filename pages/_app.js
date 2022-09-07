@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import Navbar from '../components/Navbar'
 import { NavbarStatusProvider } from '../context/NavbarStatusContext'
+import { ProjectPopupProvider } from '../context/ProjectPopupContext'
 import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
@@ -16,9 +17,11 @@ function MyApp({ Component, pageProps }) {
 				/>
 			</Head>
 			<NavbarStatusProvider>
-				<Navbar>
-					<Component {...pageProps} />
-				</Navbar>
+				<ProjectPopupProvider>
+					<Navbar>
+						<Component {...pageProps} />
+					</Navbar>
+				</ProjectPopupProvider>
 			</NavbarStatusProvider>
 		</div>
 	)

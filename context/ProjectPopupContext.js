@@ -10,6 +10,7 @@ export const ProjectPopupProvider = ({ children }) => {
 		images: [],
 		technologies: [],
 		url: '',
+		github: '',
 	})
 
 	return (
@@ -17,6 +18,8 @@ export const ProjectPopupProvider = ({ children }) => {
 			value={{
 				popupData,
 				popupStatus,
+				setPopupData,
+				setPopupStatus,
 			}}
 		>
 			{children}

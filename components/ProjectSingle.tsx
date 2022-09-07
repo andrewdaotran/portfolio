@@ -1,28 +1,43 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Icon } from 'react-icons-kit'
 import { externalLink } from 'react-icons-kit/fa/externalLink'
 import { github } from 'react-icons-kit/fa/github'
 import { useInView } from 'react-intersection-observer'
 
 import useWindowSize from '../custom-hooks/useWindowSize'
+import { Project } from '../typings'
 
 interface Props {
-	project: {
-		title: string
-		github: string
-		link: string
-		image: string
-		description: string
-		technologies: string[]
-	}
+	project: Project
 	index: number
+	setPopupStatus: Dispatch<SetStateAction<string>>
+	setPopupData: Dispatch<
+		SetStateAction<{
+			title: string
+			description: string
+			images: any[]
+			technologies: any[]
+			url: string
+			github: string
+		}>
+	>
 }
 
-const ProjectSingle = ({ project, index }: Props) => {
+const ProjectSingle = ({
+	project,
+	index,
+	setPopupStatus,
+	setPopupData,
+}: Props) => {
 	const windowSize = useWindowSize()
 	const [shown, setShown] = useState<boolean>(false)
+
+	const handleOpenProjectPopup = (e) => {
+		setPopupStatus(project.title)
+		setPopupData(project)
+	}
 
 	const { inView, ref } = useInView({ trackVisibility: false, delay: 100 })
 	useEffect(() => {
@@ -39,20 +54,21 @@ const ProjectSingle = ({ project, index }: Props) => {
 					: windowSize.width > 500
 					? 'h-[65vw]'
 					: 'h-[90vw]'
-			}  w-[90vw] sm:w-[90vw] sm:h-[60vw]  shadow-lg   relative mx-auto opacity-0 transition-opacity ease-in duration-[2000ms] relative ${
+			}  w-[90vw] sm:w-[90vw] sm:h-[60vw]  shadow-lg   relative mx-auto opacity-0 transition-opacity ease-in duration-[2000ms] cursor-pointer  ${
 				shown && 'visible opacity-100 '
 			}`}
 			ref={ref}
+			onClick={handleOpenProjectPopup}
 		>
-			<div className='opacity-30'>
+			<div className='opacity-30 '>
 				<Image
-					src={project.image}
+					src={project.images[0]}
 					layout='fill'
 					className='object-cover object-top'
 				/>
 			</div>
 			{/* Absolute Description */}
-			<div className='absolute p-8 grid gap-6 top-0 bottom-0 my-auto'>
+			<div className='absolute p-8 grid gap-6 top-0 bottom-0 my-auto pointer-events-none'>
 				<div className=''>
 					<h4 className='text-sm '>Featured Project</h4>
 					<h3 className='font-bold text-2xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
@@ -72,7 +88,7 @@ const ProjectSingle = ({ project, index }: Props) => {
 						)
 					})}
 				</div>
-				<div className='flex gap-6'>
+				<div className='flex gap-6 pointer-events-auto'>
 					<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
 						<Link href={`/`}>
 							<a target='_blank' rel='noopener noreferrer'>
@@ -107,7 +123,10 @@ const ProjectSingle = ({ project, index }: Props) => {
 				>
 					<div className={`grid ${index % 2 === 0 && 'justify-items-end'}`}>
 						<h4 className='text-sm lg:text-lg xl:text-xl'>Featured Project</h4>
-						<h3 className='font-bold text-lg lg:text-2xl xl:text-3xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'>
+						<h3
+							className='font-bold text-lg lg:text-2xl xl:text-3xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'
+							onClick={handleOpenProjectPopup}
+						>
 							{project.title}
 						</h3>
 					</div>
@@ -177,9 +196,10 @@ const ProjectSingle = ({ project, index }: Props) => {
 					}   w-[100%] h-[33vw] max-h-[30rem] relative rounded-md cursor-pointer`}
 				>
 					<Image
-						src={project.image}
+						src={project.images[0]}
 						layout='fill'
 						className='object-cover object-top rounded-md'
+						onClick={handleOpenProjectPopup}
 					/>
 				</div>
 				{/* </Link> */}

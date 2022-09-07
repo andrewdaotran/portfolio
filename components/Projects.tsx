@@ -1,68 +1,30 @@
+import { useContext, useState } from 'react'
+
 import ProjectPopup from './ProjectPopup'
 import ProjectSingle from './ProjectSingle'
+import { projectPages } from '../utils'
+import ProjectPopupContext from '../context/ProjectPopupContext'
+import { ProjectPopupContextTypes } from '../typings'
 
 const Projects = () => {
-	const projects = [
-		{
-			title: 'Find My Pet',
-			github: '/',
-			link: '/',
-			image: '/find_my_pet.png',
-			description: '',
-			technologies: [
-				'NextJS',
-				'MongoDB',
-				'TypeScript',
-				'TailwindCSS',
-				'GraphQL',
-				'Context API',
-				'PetFinder API',
-			],
-		},
-		{
-			title: 'Dungeons and Dragons Player Sheet',
-			github: '/',
-			link: '/',
-			image: '/dungeons_and_dragons.png',
-			description: '',
-			technologies: [
-				'ReactJS',
-				'MongoDB',
-				'Node.js',
-				'Redux Toolkit',
-				'Material UI',
-			],
-		},
-		{
-			title: 'Photography Blog',
-			github: '/',
-			link: '/',
-			image: '/photography_blog.png',
-			description: '',
-			technologies: ['NextJS', 'Sanity.io', 'TypeScript', 'TailwindCSS'],
-		},
-		{
-			title: 'The District Eye Care Landing Page',
-			github: '/',
-			link: '/',
-			image: '/district_eye.png',
-			description: '',
-			technologies: ['NextJS', 'TailwindCSS'],
-		},
-	]
+	const { popupStatus, setPopupStatus, popupData, setPopupData } =
+		useContext<ProjectPopupContextTypes>(ProjectPopupContext)
+	// console.log(popupData)
 	return (
 		<div className={`border-b border-black mx-4 relative`}>
-			<ProjectPopup />
+			{popupStatus && <ProjectPopup />}
 			<div className='grid gap-16 md:gap-24 lg:gap-32 w-full pb-16 md:pb-24 lg:pb-32 '>
 				<h2 className='text-5xl text-center pt-16 mt-[-4rem]' id='portfolio'>
 					Projects
 				</h2>
-				{projects.map((project, index) => {
+				{projectPages.map((project, index) => {
 					return (
 						<ProjectSingle
 							project={project}
 							key={project.title}
 							index={index}
+							setPopupStatus={setPopupStatus}
+							setPopupData={setPopupData}
 						/>
 					)
 				})}
