@@ -83,7 +83,12 @@ const Navbar = ({ children }) => {
 					<div className='flex col-start-1 col-end-2 justify-between w-[20rem] mt-[1.75rem] z-20'>
 						{navigation.map((link) => {
 							return (
-								<Scroll.Link to={link.linkTo} smooth={true} duration={1000}>
+								<Scroll.Link
+									to={link.linkTo}
+									smooth={true}
+									duration={1000}
+									key={link.title}
+								>
 									<div
 										className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
 										onMouseEnter={link.onMouseEnter}
