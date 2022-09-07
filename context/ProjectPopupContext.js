@@ -12,6 +12,17 @@ export const ProjectPopupProvider = ({ children }) => {
 		url: '',
 		github: '',
 	})
+	const closePopup = () => {
+		setPopupStatus('')
+		setPopupData({
+			title: '',
+			description: '',
+			images: [],
+			technologies: [],
+			url: '',
+			github: '',
+		})
+	}
 
 	return (
 		<ProjectPopupContext.Provider
@@ -20,6 +31,7 @@ export const ProjectPopupProvider = ({ children }) => {
 				popupStatus,
 				setPopupData,
 				setPopupStatus,
+				closePopup,
 			}}
 		>
 			{children}

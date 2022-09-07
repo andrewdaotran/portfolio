@@ -45,6 +45,7 @@ export interface ProjectPopupContextTypes {
 			github: string
 		}>
 	>
+	closePopup: () => void
 }
 
 export interface Project {

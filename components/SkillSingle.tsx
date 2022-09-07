@@ -19,7 +19,7 @@ const SkillSingle = ({ skill }: Props) => {
 	}, [inView])
 	return (
 		<div
-			className={`grid text-center gap-8 opacity-0 transition-opacity ease-in duration-[2000ms] ${
+			className={`grid text-center gap-8 opacity-0 transition-opacity ease-in duration-[2000ms]  ${
 				shown && 'visible opacity-100 '
 			}`}
 			key={skill.title}
