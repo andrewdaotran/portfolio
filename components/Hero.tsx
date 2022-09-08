@@ -1,37 +1,14 @@
 import Image from 'next/image'
 import useWindowSize from '../custom-hooks/useWindowSize'
 import BackgroundSingle from './BackgroundSingle'
+import { heroLeftInformation, heroRightInformation } from '../utils'
 
 const Hero = () => {
 	const windowSize = useWindowSize()
 
-	const leftInformation = [
-		{
-			title: 'BIOGRAPHY',
-			content: [
-				'	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, temporibus? more words please',
-			],
-		},
-		{
-			title: 'CONTACT',
-			content: ['Orange County, California', 'andrewdaotran@gmail'],
-		},
-	]
-	const rightInformation = [
-		{
-			title: 'BIOGRAPHY',
-			content: [
-				'	Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi, temporibus? more words please',
-			],
-		},
-		{
-			title: 'CONTACT',
-			content: ['Orange County, California', 'andrewdaotran@gmail'],
-		},
-	]
 	return (
 		<div
-			className='grid gap-16 md:gap-24 lg:gap-32 border-b border-black pb-16 md:pb-24 lg:pb-32  mx-4 pt-48 mt-[-12rem]'
+			className='grid gap-16 md:gap-24 lg:gap-32 border-b border-black pb-16 md:pb-24 lg:pb-32  mx-4 pt-48 mt-[-12rem] bg-white'
 			id='home'
 		>
 			{/* Hero Copy */}
@@ -60,20 +37,20 @@ const Hero = () => {
 
 				{/* Left */}
 				<div
-					className={`grid gap-12 sm:gap-24 col-start-1 col-end-7   xl:col-end-4 xl:row-start-1 items-center ${
+					className={`grid gap-12 sm:gap-24 col-start-1 col-end-13 md:col-end-7 xl:col-end-4 xl:row-start-1 items-center ${
 						windowSize.width < 1280 && 'pt-16 mt-[-4rem]'
 					}`}
 					id={`${windowSize.width < 1280 && 'about-me'}`}
 				>
-					{leftInformation.map((info) => {
+					{heroLeftInformation.map((info) => {
 						return (
 							<BackgroundSingle info={info} key={info.title} isLeft={true} />
 						)
 					})}
 				</div>
 				{/* Right */}
-				<div className='grid gap-12 sm:gap-24 col-start-7 col-end-13 xl:col-start-10 items-center '>
-					{rightInformation.map((info) => {
+				<div className='grid gap-12 sm:gap-24 col-start-1  md:col-start-7 col-end-13 xl:col-start-10 items-center '>
+					{heroRightInformation.map((info) => {
 						return (
 							<BackgroundSingle info={info} isLeft={false} key={info.title} />
 						)

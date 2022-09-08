@@ -132,10 +132,7 @@ const ProjectSingle = ({
 					</div>
 
 					<div className='bg-lightGrey  p-4 rounded-md'>
-						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-							totam quisquam dolor, porro sed voluptates.
-						</p>
+						<p>{project.description}</p>
 					</div>
 					<div
 						className={`flex gap-4 flex-wrap text-xs lg:text-lg xl:text-xl ${

@@ -19,13 +19,13 @@ const SkillSingle = ({ skill }: Props) => {
 	}, [inView])
 	return (
 		<div
-			className={`grid text-center gap-8 opacity-0 transition-opacity ease-in duration-[2000ms]  ${
+			className={`grid text-center gap-8 opacity-0 transition-opacity ease-in duration-[2000ms] ${
 				shown && 'visible opacity-100 '
 			}`}
 			key={skill.title}
 			ref={ref}
 		>
-			<div className='bg-lightGrey rounded-full w-fit py-9 px-12 sm:py-12 sm:px-16 md:py-[4.5rem] md:px-24  mx-auto'>
+			<div className='bg-lightGrey rounded-full w-fit py-9 px-12 sm:py-12 sm:px-16 md:py-[4.5rem] md:px-24  mx-auto shadow-md'>
 				<div className='w-[4rem] h-[4rem] sm:w-[7rem] sm:h-[7rem] relative '>
 					<Image src={skill.image} layout='fill' className='object-cover ' />
 				</div>

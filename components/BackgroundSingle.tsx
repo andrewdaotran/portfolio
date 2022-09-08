@@ -28,12 +28,20 @@ const BackgroundSingle = ({ info, isLeft }: Props) => {
 			}`}
 			ref={ref}
 		>
-			<h3 className={`${isLeft ? 'text-start' : 'text-end'} text-accentGrey `}>
+			<h3
+				className={`${
+					isLeft ? 'text-start' : 'text-end'
+				} text-accentGrey text-sm tracking-wider`}
+			>
 				{info.title}
 			</h3>
 			<div className={`${isLeft ? 'text-start' : 'text-end'}`}>
 				{info.content.map((paragraph) => {
-					return <p key={paragraph}>{paragraph}</p>
+					return (
+						<p key={paragraph} className={`text-xl tracking-wide leading-10`}>
+							{paragraph}
+						</p>
+					)
 				})}
 			</div>
 		</div>
