@@ -1,3 +1,6 @@
+import { github } from 'react-icons-kit/fa/github'
+import { linkedinSquare } from 'react-icons-kit/fa/linkedinSquare'
+
 export const projectPages = [
 	{
 		title: 'Find My Pet',
@@ -108,5 +111,48 @@ export const skills = [
 	{
 		title: 'GraphQL',
 		image: '/graphql_icon.png',
+	},
+]
+
+export const iconLinks = [
+	{
+		title: 'linkedIn',
+		link: 'https://www.linkedin.com/in/ndru/',
+		icon: linkedinSquare,
+	},
+	{
+		title: 'github',
+		link: 'https://github.com/andrewdaotran',
+		icon: github,
+	},
+]
+
+export const navigation = [
+	{
+		title: 'HOME',
+		onMouseEnter: () => setHomeStatus({ ...homeStatus, status: true }),
+		onMouseLeave: () => {
+			if (!homeStatus.page) setHomeStatus({ ...homeStatus, status: false })
+		},
+		linkTo: 'home',
+	},
+	{
+		title: 'ABOUT ME',
+		onMouseEnter: () => setAboutMeStatus({ ...aboutMeStatus, status: true }),
+		onMouseLeave: () => {
+			if (!portfolioStatus.page)
+				setAboutMeStatus({ ...aboutMeStatus, status: false })
+		},
+		linkTo: 'about-me',
+	},
+	{
+		title: 'PORTFOLIO',
+		onMouseEnter: () =>
+			setPortfolioStatus({ ...portfolioStatus, status: true }),
+		onMouseLeave: () => {
+			if (!portfolioStatus.page)
+				setPortfolioStatus({ ...portfolioStatus, status: false })
+		},
+		linkTo: 'portfolio',
 	},
 ]

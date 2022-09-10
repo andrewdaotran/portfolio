@@ -1,9 +1,28 @@
-import React from 'react'
+import Link from 'next/link'
+import Icon from 'react-icons-kit'
+
+import { iconLinks } from '../utils'
 
 const Footer = () => {
 	return (
-		<div className='fixed  w-full mx-4 bottom-0 border border-red-400'>
-			<h2 className='text-xl'>Connect with me at andrewdaotran@gmail.com</h2>
+		<div className='fixed w-fit mx-4 bottom-0 translate-y-[-50%] left-[50%] translate-x-[-50%] grid gap-10 justify-items-center -z-20'>
+			<h2 className='tracking-wider'>andrewdaotran@gmail.com</h2>
+			<div className='flex gap-8 w-fit '>
+				{iconLinks.map((link) => {
+					return (
+						<h3
+							className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300  pointer-events-auto'
+							key={link.title}
+						>
+							<Link href={link.link}>
+								<a target='_blank' rel='noopener noreferrer'>
+									<Icon icon={link.icon} size={25} />
+								</a>
+							</Link>
+						</h3>
+					)
+				})}
+			</div>
 		</div>
 	)
 }

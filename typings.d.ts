@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react'
+
 export interface NavbarStatusContextTypes {
 	homeStatus: {
 		page: boolean
@@ -11,6 +13,7 @@ export interface NavbarStatusContextTypes {
 		page: boolean
 		status: boolean
 	}
+	menuClicked: boolean
 	setHomeStatus: Dispatch<
 		SetStateAction<{
 			page: boolean
@@ -29,6 +32,7 @@ export interface NavbarStatusContextTypes {
 			status: boolean
 		}>
 	>
+	setMenuClicked: Dispatch<SetStateAction<boolean>>
 }
 
 export interface ProjectPopupContextTypes {

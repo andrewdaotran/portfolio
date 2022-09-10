@@ -3,6 +3,7 @@ import { createContext, useState } from 'react'
 const NavbarStatusContext = createContext()
 
 export const NavbarStatusProvider = ({ children }) => {
+	const [menuClicked, setMenuClicked] = useState(false)
 	const [homeStatus, setHomeStatus] = useState({
 		page: false,
 		status: false,
@@ -24,9 +25,11 @@ export const NavbarStatusProvider = ({ children }) => {
 				homeStatus,
 				portfolioStatus,
 				aboutMeStatus,
+				menuClicked,
 				setHomeStatus,
 				setPortfolioStatus,
 				setAboutMeStatus,
+				setMenuClicked,
 			}}
 		>
 			{children}

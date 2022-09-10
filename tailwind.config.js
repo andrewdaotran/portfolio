@@ -17,6 +17,15 @@ module.exports = {
 			fontFamily: {
 				playFair: ['Playfair Display'],
 			},
+			keyframes: {
+				wiggle: {
+					'0%, 100%': { transform: 'rotate(-3deg)' },
+					'50%': { transform: 'rotate(90deg)' },
+				},
+			},
+			animation: {
+				wiggle: 'wiggle 500ms ease-in-out',
+			},
 		},
 	},
 	plugins: [],

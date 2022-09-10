@@ -1,39 +1,26 @@
-import { MenuAlt4Icon } from '@heroicons/react/outline'
 import { Icon } from 'react-icons-kit'
-import { github } from 'react-icons-kit/fa/github'
 import { menu } from 'react-icons-kit/entypo/menu'
-import { linkedinSquare } from 'react-icons-kit/fa/linkedinSquare'
 import { circle } from 'react-icons-kit/fa/circle'
 import { useContext, useState } from 'react'
 import * as Scroll from 'react-scroll'
+import Link from 'next/link'
 
 import useWindowSize from '../custom-hooks/useWindowSize'
 import NavbarStatusContext from '../context/NavbarStatusContext'
 import { NavbarStatusContextTypes } from '../typings'
-import Link from 'next/link'
+import { iconLinks } from '../utils'
 
 const Navbar = ({ children }) => {
 	const {
 		homeStatus,
 		portfolioStatus,
 		aboutMeStatus,
+		menuClicked,
 		setHomeStatus,
 		setPortfolioStatus,
 		setAboutMeStatus,
+		setMenuClicked,
 	} = useContext<NavbarStatusContextTypes>(NavbarStatusContext)
-
-	const links = [
-		{
-			title: 'linkedIn',
-			link: 'https://www.linkedin.com/in/ndru/',
-			icon: linkedinSquare,
-		},
-		{
-			title: 'github',
-			link: 'https://github.com/andrewdaotran',
-			icon: github,
-		},
-	]
 
 	const navigation = [
 		{
@@ -65,21 +52,33 @@ const Navbar = ({ children }) => {
 		},
 	]
 
-	const [menuClicked, setMenuClicked] = useState<boolean>(false)
+	const handleMenuClicked = () => {
+		setMenuClicked(!menuClicked)
+	}
 
 	const windowSize = useWindowSize()
 	return (
 		<>
 			<div
-				className={` ${
+				className={` z-50 ${
 					windowSize.width < 1024 ? 'py-[3.75rem]' : 'py-14'
-				}  px-4 grid grid-cols-3  items-center `}
+				}  px-4 grid grid-cols-3  items-center`}
 			>
+				{/* Small Screen */}
 				{windowSize.width < 1024 ? (
-					<h3 className='h-10 w-10 col-start-1 col-end-2 hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '>
-						<Icon icon={menu} size={30} />
+					<h3
+						className={` w-fit col-start-1 col-end-2 hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer z-50 ${
+							menuClicked
+								? 'rotate-90 transition-transform duration-500'
+								: 'transition-transform duration-500'
+						}`}
+						onClick={handleMenuClicked}
+						// onAnimationEnd={handleMenuClicked}
+					>
+						<Icon icon={menu} size={40} />
 					</h3>
 				) : (
+					// Large Screen
 					<div className='flex col-start-1 col-end-2 justify-between w-[20rem] mt-[1.75rem] z-20'>
 						{navigation.map((link) => {
 							return (
@@ -108,13 +107,13 @@ const Navbar = ({ children }) => {
 						})}
 					</div>
 				)}
-				<h3 className='  text-center col-start-2 col-end-3 '>ndru</h3>
+				<h3 className='  text-center col-start-2 col-end-3 z-50'>ndru</h3>
 				{windowSize.width > 767 && (
 					<div className='flex gap-8 col-start-3 col-end-4  w-fit justify-self-end'>
-						{links.map((link) => {
+						{iconLinks.map((link) => {
 							return (
 								<h3
-									className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 z-20'
+									className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 z-50'
 									key={link.title}
 								>
 									<Link href={link.link}>
