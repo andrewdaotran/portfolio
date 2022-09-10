@@ -30,16 +30,21 @@ const Sidebar = () => {
 		{
 			title: 'HOME',
 			linkTo: 'home',
+			page: homeStatus.page,
 		},
 		{
 			title: 'ABOUT ME',
 			linkTo: 'about-me',
+			page: aboutMeStatus.page,
 		},
 		{
 			title: 'PORTFOLIO',
 			linkTo: 'portfolio',
+			page: portfolioStatus.page,
 		},
 	]
+
+	const handleCloseSidebar = () => setMenuClicked(false)
 
 	return (
 		<>
@@ -51,34 +56,45 @@ const Sidebar = () => {
 				}`}
 			/>
 			<div
-				className={`z-[100] fixed h-screen w-full sm:w-[28rem] top-0  bg-white transition-all duration-700 p-8 ${
+				className={`z-[100] fixed h-screen w-full sm:w-[28rem] top-0  bg-white transition-all duration-700 px-16 py-10 ${
 					menuClicked ? 'right-0' : 'right-[-28rem]'
 				}`}
 				ref={domNode}
 			>
-				<div className='absolute right-10 hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
-					<Icon size={windowSize.width < 641 ? 30 : 40} icon={ic_close} />
-				</div>
-
-				<h3>sidebar</h3>
-				<div>
-					{navigation.map((link) => {
-						return (
-							<Scroll.Link
-								to={link.linkTo}
-								smooth={true}
-								duration={1000}
-								key={link.title}
-							>
-								<div
-									className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
+				<div className=' grid gap-16 pt-4 '>
+					{/* Top plus X */}
+					<div className='flex justify-between  items-center'>
+						<h3>sidebar</h3>
+						<div className=' hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+							<Icon size={windowSize.width < 641 ? 30 : 40} icon={ic_close} />
+						</div>
+					</div>
+					<div className='grid gap-10'>
+						{navigation.map((link) => {
+							return (
+								<Scroll.Link
+									to={link.linkTo}
+									smooth={true}
+									duration={1000}
 									key={link.title}
+									onClick={handleCloseSidebar}
 								>
-									<h3 className='w-fit '>{link.title}</h3>
-								</div>
-							</Scroll.Link>
-						)
-					})}
+									<div
+										className=' group grid justify-items-start hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer w-fit'
+										key={link.title}
+									>
+										<h3
+											className={` w-fit font-bold ${
+												windowSize.width < 768 ? 'text-xl' : 'text-2xl'
+											} ${link.page && 'text-mainOrange '}`}
+										>
+											{link.title}
+										</h3>
+									</div>
+								</Scroll.Link>
+							)
+						})}
+					</div>
 				</div>
 			</div>
 		</>

@@ -6,22 +6,42 @@ export const NavbarStatusProvider = ({ children }) => {
 	const [menuClicked, setMenuClicked] = useState(false)
 	const [homeStatus, setHomeStatus] = useState({
 		page: false,
-		status: false,
+		title: 'HOME',
 	})
 
 	const [portfolioStatus, setPortfolioStatus] = useState({
 		page: false,
-		status: false,
+		title: 'PORTFOLIO',
 	})
 
 	const [aboutMeStatus, setAboutMeStatus] = useState({
 		page: false,
-		status: false,
+		title: 'ABOUT ME',
 	})
+
+	const navigation = [
+		{
+			title: 'HOME',
+			linkTo: 'home',
+			page: homeStatus.page,
+		},
+		{
+			title: 'ABOUT ME',
+
+			linkTo: 'about-me',
+			page: aboutMeStatus.page,
+		},
+		{
+			title: 'PORTFOLIO',
+			linkTo: 'portfolio',
+			page: portfolioStatus.page,
+		},
+	]
 
 	return (
 		<NavbarStatusContext.Provider
 			value={{
+				navigation,
 				homeStatus,
 				portfolioStatus,
 				aboutMeStatus,

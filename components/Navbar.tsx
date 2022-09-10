@@ -16,41 +16,12 @@ const Navbar = ({ children }) => {
 		portfolioStatus,
 		aboutMeStatus,
 		menuClicked,
+		navigation,
 		setHomeStatus,
 		setPortfolioStatus,
 		setAboutMeStatus,
 		setMenuClicked,
 	} = useContext<NavbarStatusContextTypes>(NavbarStatusContext)
-
-	const navigation = [
-		{
-			title: 'HOME',
-			onMouseEnter: () => setHomeStatus({ ...homeStatus, status: true }),
-			onMouseLeave: () => {
-				if (!homeStatus.page) setHomeStatus({ ...homeStatus, status: false })
-			},
-			linkTo: 'home',
-		},
-		{
-			title: 'ABOUT ME',
-			onMouseEnter: () => setAboutMeStatus({ ...aboutMeStatus, status: true }),
-			onMouseLeave: () => {
-				if (!portfolioStatus.page)
-					setAboutMeStatus({ ...aboutMeStatus, status: false })
-			},
-			linkTo: 'about-me',
-		},
-		{
-			title: 'PORTFOLIO',
-			onMouseEnter: () =>
-				setPortfolioStatus({ ...portfolioStatus, status: true }),
-			onMouseLeave: () => {
-				if (!portfolioStatus.page)
-					setPortfolioStatus({ ...portfolioStatus, status: false })
-			},
-			linkTo: 'portfolio',
-		},
-	]
 
 	const handleMenuClicked = () => {
 		setMenuClicked(!menuClicked)
@@ -73,7 +44,6 @@ const Navbar = ({ children }) => {
 								: 'transition-transform duration-500'
 						}`}
 						onClick={handleMenuClicked}
-						// onAnimationEnd={handleMenuClicked}
 					>
 						<Icon icon={menu} size={40} />
 					</h3>
@@ -89,17 +59,19 @@ const Navbar = ({ children }) => {
 									key={link.title}
 								>
 									<div
-										className=' group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer '
-										onMouseEnter={link.onMouseEnter}
-										onMouseLeave={link.onMouseLeave}
+										className={` group grid justify-items-center hover:text-mainOrange transition-colors ease-in-out duration-300 cursor-pointer ${
+											link.page && 'text-mainOrange'
+										}`}
 										key={link.title}
 									>
-										<h3 className='w-fit '>{link.title}</h3>
+										<h3 className={`w-fit `}>{link.title}</h3>
 
 										<Icon
 											icon={circle}
 											size={6}
-											className={`hidden opacity-0 transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100`}
+											className={`hidden transition-opacity ease-in-out duration-300 group-hover:visible group-hover:opacity-100 ${
+												link.page || 'opacity-0 '
+											}`}
 										/>
 									</div>
 								</Scroll.Link>

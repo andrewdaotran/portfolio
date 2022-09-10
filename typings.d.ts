@@ -1,35 +1,41 @@
 import { Dispatch, SetStateAction } from 'react'
 
 export interface NavbarStatusContextTypes {
+	navigation: {
+		title: string
+		linkTo: string
+		page: boolean
+	}[]
+
 	homeStatus: {
 		page: boolean
-		status: boolean
+		title: string
 	}
 	portfolioStatus: {
 		page: boolean
-		status: boolean
+		title: string
 	}
 	aboutMeStatus: {
 		page: boolean
-		status: boolean
+		title: string
 	}
 	menuClicked: boolean
 	setHomeStatus: Dispatch<
 		SetStateAction<{
 			page: boolean
-			status: boolean
+			title: string
 		}>
 	>
 	setPortfolioStatus: Dispatch<
 		SetStateAction<{
 			page: boolean
-			status: boolean
+			title: string
 		}>
 	>
 	setAboutMeStatus: Dispatch<
 		SetStateAction<{
 			page: boolean
-			status: boolean
+			title: string
 		}>
 	>
 	setMenuClicked: Dispatch<SetStateAction<boolean>>
