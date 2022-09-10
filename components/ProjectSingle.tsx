@@ -124,7 +124,7 @@ const ProjectSingle = ({
 					<div className={`grid ${index % 2 === 0 && 'justify-items-end'}`}>
 						<h4 className='text-sm lg:text-lg xl:text-xl'>Featured Project</h4>
 						<h3
-							className='font-bold text-lg lg:text-2xl xl:text-3xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300'
+							className='font-bold text-lg lg:text-2xl xl:text-3xl hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 w-fit'
 							onClick={handleOpenProjectPopup}
 						>
 							{project.title}

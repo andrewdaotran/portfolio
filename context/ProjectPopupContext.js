@@ -14,14 +14,16 @@ export const ProjectPopupProvider = ({ children }) => {
 	})
 	const closePopup = () => {
 		setPopupStatus('')
-		setPopupData({
-			title: '',
-			description: '',
-			images: [],
-			technologies: [],
-			url: '',
-			github: '',
-		})
+		setTimeout(() => {
+			setPopupData({
+				title: '',
+				description: '',
+				images: [],
+				technologies: [],
+				url: '',
+				github: '',
+			})
+		}, 700)
 	}
 
 	return (

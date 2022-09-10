@@ -6,7 +6,7 @@ import Head from 'next/head'
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<div className='font-playFair max-w-7xl mx-auto'>
+		<div className='font-playFair max-w-[100rem] mx-auto'>
 			<Head>
 				<title>Andrew Tran - Front End React Developer</title>
 				<link rel='preconnect' href='https://fonts.googleapis.com' />

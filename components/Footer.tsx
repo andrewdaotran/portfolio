@@ -5,7 +5,7 @@ import { iconLinks } from '../utils'
 
 const Footer = () => {
 	return (
-		<div className='fixed w-fit mx-4 bottom-0 translate-y-[-50%] left-[50%] translate-x-[-50%] grid gap-10 justify-items-center -z-20'>
+		<div className=' h-48  fixed px-4 bottom-0  left-[50%] translate-x-[-50%] grid  justify-items-center items-center -z-20'>
 			<h2 className='tracking-wider'>andrewdaotran@gmail.com</h2>
 			<div className='flex gap-8 w-fit '>
 				{iconLinks.map((link) => {

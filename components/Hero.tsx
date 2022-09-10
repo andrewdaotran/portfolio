@@ -8,7 +8,7 @@ const Hero = () => {
 
 	return (
 		<div
-			className='grid gap-16 md:gap-24 lg:gap-32 border-b border-black pb-16 md:pb-24 lg:pb-32  mx-4 pt-48 mt-[-12rem] bg-white'
+			className='grid gap-16 md:gap-24 lg:gap-32 border-b border-black pb-16 md:pb-24 lg:pb-32  mx-4 pt-36 mt-[-12rem] bg-white'
 			id='home'
 		>
 			{/* Hero Copy */}

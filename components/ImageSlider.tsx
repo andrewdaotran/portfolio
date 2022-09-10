@@ -46,7 +46,7 @@ const ImageSlider = () => {
 
 			<div className='w-[60vw] h-[50vw] relative rounded-md'>
 				<Image
-					src={popupData.images[currentImage]}
+					src={popupData.images[currentImage] || '/No_image_available.svg.png'}
 					layout='fill'
 					className='object-cover object-top rounded-md'
 				/>

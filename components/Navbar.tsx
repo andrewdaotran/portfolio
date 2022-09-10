@@ -11,17 +11,8 @@ import { NavbarStatusContextTypes } from '../typings'
 import { iconLinks } from '../utils'
 
 const Navbar = ({ children }) => {
-	const {
-		homeStatus,
-		portfolioStatus,
-		aboutMeStatus,
-		menuClicked,
-		navigation,
-		setHomeStatus,
-		setPortfolioStatus,
-		setAboutMeStatus,
-		setMenuClicked,
-	} = useContext<NavbarStatusContextTypes>(NavbarStatusContext)
+	const { menuClicked, navigation, setMenuClicked } =
+		useContext<NavbarStatusContextTypes>(NavbarStatusContext)
 
 	const handleMenuClicked = () => {
 		setMenuClicked(!menuClicked)
