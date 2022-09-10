@@ -1,11 +1,12 @@
 import React, { Dispatch, SetStateAction, useContext, useRef } from 'react'
 import { Icon } from 'react-icons-kit'
-import { close } from 'react-icons-kit/fa/close'
+import { ic_close } from 'react-icons-kit/md/ic_close'
 
 import useClickOutside from '../custom-hooks/useClickOutside'
 import ProjectPopupContext from '../context/ProjectPopupContext'
 import { Project, ProjectPopupContextTypes } from '../typings'
 import ImageSlider from './ImageSlider'
+import ProjectPopupDescription from './ProjectPopupDescription'
 
 interface Props {
 	setPopupStatus: Dispatch<SetStateAction<string>>
@@ -32,6 +33,7 @@ const ProjectPopup = () => {
 
 	return (
 		<>
+			{/* Low Opacity Background */}
 			<div
 				className={`z-50 fixed top-0 right-0  mx-auto  w-full h-full transition-all ease-in-out duration-700 ${
 					popupStatus
@@ -39,8 +41,9 @@ const ProjectPopup = () => {
 						: ' opacity-0 pointer-events-none'
 				}`}
 			/>
+			{/* White Background of Popup */}
 			<div
-				className={`fixed grid  h-[40rem] w-[45rem] border border-red-500  top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-white items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
+				className={`fixed grid  h-[44.5rem] w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-white items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
 					popupStatus
 						? ' opacity-100'
 						: ' opacity-0 pointer-events-none duration-0'
@@ -48,12 +51,13 @@ const ProjectPopup = () => {
 				ref={domNode}
 			>
 				<Icon
-					icon={close}
-					size={30}
+					icon={ic_close}
+					size={40}
 					onClick={closePopup}
-					className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 w-fit h-fit absolute top-10 right-10 z-20`}
+					className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 w-fit h-fit absolute top-6 right-4 z-20`}
 				/>
 				<ImageSlider />
+				<ProjectPopupDescription />
 			</div>
 		</>
 	)

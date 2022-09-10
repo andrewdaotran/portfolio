@@ -33,7 +33,7 @@ const ImageSlider = () => {
 	}
 
 	return (
-		<div className='flex items-center gap-4 '>
+		<div className='flex items-center gap-2 pt-6 '>
 			<Icon
 				icon={chevronLeft}
 				size={30}
@@ -44,7 +44,7 @@ const ImageSlider = () => {
 				onClick={handleDecrementCurrentImage}
 			/>
 
-			<div className='w-[60vw] h-[50vw] relative rounded-md'>
+			<div className='w-[35rem] h-[28rem] relative rounded-md'>
 				<Image
 					src={popupData.images[currentImage] || '/No_image_available.svg.png'}
 					layout='fill'

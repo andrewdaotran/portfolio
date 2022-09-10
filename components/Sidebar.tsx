@@ -57,7 +57,11 @@ const Sidebar = () => {
 			/>
 			<div
 				className={`z-[100] fixed h-screen w-full sm:w-[28rem] top-0  bg-white transition-all duration-700 px-16 py-10 ${
-					menuClicked ? 'right-0' : 'right-[-28rem]'
+					menuClicked
+						? 'right-0'
+						: menuClicked && windowSize.width >= 640
+						? 'right-[-28rem]'
+						: 'right-[-100%]'
 				}`}
 				ref={domNode}
 			>
@@ -65,7 +69,10 @@ const Sidebar = () => {
 					{/* Top plus X */}
 					<div className='flex justify-between  items-center'>
 						<h3>sidebar</h3>
-						<div className=' hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
+						<div
+							className=' hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '
+							onClick={handleCloseSidebar}
+						>
 							<Icon size={windowSize.width < 641 ? 30 : 40} icon={ic_close} />
 						</div>
 					</div>
