@@ -53,6 +53,7 @@ export interface ProjectPopupContextTypes {
 			technologies: any[]
 			url: string
 			github: string
+			page: string
 		}>
 	>
 	closePopup: () => void
@@ -65,4 +66,5 @@ export interface Project {
 	images: string[]
 	url: string
 	github: string
+	page: string
 }

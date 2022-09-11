@@ -43,7 +43,7 @@ const ProjectPopup = () => {
 			/>
 			{/* White Background of Popup */}
 			<div
-				className={`fixed grid  h-[44.5rem] w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-white items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
+				className={`fixed grid  h-[47rem] w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-gray-700 items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
 					popupStatus
 						? ' opacity-100'
 						: ' opacity-0 pointer-events-none duration-0'

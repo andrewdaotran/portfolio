@@ -6,7 +6,11 @@ export const projectPages = [
 		title: 'Find My Pet',
 		description:
 			'Full-stack web application to reunite users to their lost pets, queries PetFinder API to display adoptable pets in the US ',
-		images: ['/find_my_pet.png'],
+		images: [
+			'/find_my_pet.png',
+			'/dungeons_and_dragons.png',
+			'/photography_blog.png',
+		],
 		technologies: [
 			'NextJS',
 			'MongoDB',
@@ -18,6 +22,7 @@ export const projectPages = [
 		],
 		url: '/',
 		github: '/',
+		page: '/',
 	},
 	{
 		title: 'Dungeons and Dragons Player Sheet',
@@ -33,6 +38,7 @@ export const projectPages = [
 		],
 		url: '/',
 		github: '/',
+		page: '/',
 	},
 	{
 		title: 'Photography Blog',
@@ -42,6 +48,7 @@ export const projectPages = [
 		technologies: ['NextJS', 'Sanity.io', 'TypeScript', 'TailwindCSS'],
 		url: '/',
 		github: '/',
+		page: '/',
 	},
 	{
 		title: 'The District Eye Care Landing Page',
@@ -51,6 +58,7 @@ export const projectPages = [
 		technologies: ['NextJS', 'TailwindCSS'],
 		url: '/',
 		github: '/',
+		page: '/',
 	},
 ]
 

@@ -11,6 +11,7 @@ export const ProjectPopupProvider = ({ children }) => {
 		technologies: [],
 		url: '',
 		github: '',
+		page: '',
 	})
 	const closePopup = () => {
 		setPopupStatus('')
@@ -22,6 +23,7 @@ export const ProjectPopupProvider = ({ children }) => {
 				technologies: [],
 				url: '',
 				github: '',
+				page: '',
 			})
 		}, 700)
 	}

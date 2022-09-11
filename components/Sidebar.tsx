@@ -1,8 +1,7 @@
-import { useContext, useRef } from 'react'
+import { useContext } from 'react'
 import NavbarStatusContext from '../context/NavbarStatusContext'
 import { ic_close } from 'react-icons-kit/md/ic_close'
 import * as Scroll from 'react-scroll'
-import Link from 'next/link'
 import Icon from 'react-icons-kit'
 
 import useClickOutside from '../custom-hooks/useClickOutside'
@@ -11,6 +10,7 @@ import useWindowSize from '../custom-hooks/useWindowSize'
 
 const Sidebar = () => {
 	const windowSize = useWindowSize()
+	console.log(windowSize.width)
 	const {
 		homeStatus,
 		portfolioStatus,
