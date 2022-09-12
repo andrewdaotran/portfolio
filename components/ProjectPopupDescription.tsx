@@ -10,9 +10,9 @@ const ProjectPopupDescription = () => {
 	const { popupData, closePopup } =
 		useContext<ProjectPopupContextTypes>(ProjectPopupContext)
 	return (
-		<div className='flex flex-col h-[15rem]  w-full p-6  gap-1 bg-white'>
+		<div className='flex flex-col h-fit w-[95vw] md:h-[15rem]  md:w-full p-6  gap-1 bg-white'>
 			<h3 className='text-2xl font-bold tracking-wide'>{popupData.title}</h3>
-			<div className='flex gap-2'>
+			<div className='flex gap-2 flex-wrap'>
 				{popupData.technologies.map((technology, index) => {
 					return (
 						<Fragment key={technology}>

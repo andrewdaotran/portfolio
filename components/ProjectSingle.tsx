@@ -48,7 +48,7 @@ const ProjectSingle = ({ project, index }: Props) => {
 			ref={ref}
 			onClick={handleOpenProjectPopup}
 		>
-			<div className='opacity-30 '>
+			<div className='opacity-20 '>
 				<Image
 					src={project.images[0]}
 					layout='fill'
@@ -63,10 +63,7 @@ const ProjectSingle = ({ project, index }: Props) => {
 						{project.title}
 					</h3>
 				</div>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-					totam quisquam dolor, porro sed voluptates.
-				</p>
+				<p className='tracking-wide'>{project.description}</p>
 				<div className='flex gap-4 flex-wrap text-xs '>
 					{project.technologies.map((technology) => {
 						return (

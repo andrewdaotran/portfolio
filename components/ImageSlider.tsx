@@ -32,18 +32,18 @@ const ImageSlider = () => {
 	}
 
 	return (
-		<div className='flex items-center gap-2 py-9 relative'>
+		<div className=' grid grid-cols-5 grid-rows-6 md:flex items-center  gap-2 py-4  md:py-9 relative justify-items-center '>
 			<Icon
 				icon={chevronLeft}
 				size={30}
 				// onClick={closePopup}
-				className={`cursor-pointer w-fit h-fit bg-gray-300 p-3 ${
+				className={`cursor-pointer w-fit h-fit bg-gray-300 p-3 col-start-2 col-end-3 ${
 					popupData.images.length === 1 && 'opacity-50 cursor-default'
 				}`}
 				onClick={handleDecrementCurrentImage}
 			/>
 
-			<div className='w-[35rem] h-[28rem] relative rounded-md transition-all ease-in-out duration-500 flex'>
+			<div className='w-[80vw] h-[60vw] md:w-[35rem] md:h-[28rem] relative rounded-md transition-all ease-in-out duration-500 flex col-start-1 col-end-6 row-start-1 row-end-6 '>
 				<Image
 					src={popupData.images[currentImage] || '/No_image_available.svg.png'}
 					layout='fill'
@@ -54,7 +54,7 @@ const ImageSlider = () => {
 				icon={chevronRight}
 				size={30}
 				// onClick={closePopup}
-				className={`cursor-pointer t w-fit h-fit bg-gray-300 p-3 ${
+				className={`cursor-pointer t w-fit h-fit bg-gray-300 p-3 col-start-4 col-end-5  ${
 					popupData.images.length === 1 && 'opacity-50 cursor-default'
 				}`}
 				onClick={handleIncrementCurrentImage}

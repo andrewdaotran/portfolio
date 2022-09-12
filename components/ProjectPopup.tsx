@@ -7,6 +7,7 @@ import ProjectPopupContext from '../context/ProjectPopupContext'
 import { Project, ProjectPopupContextTypes } from '../typings'
 import ImageSlider from './ImageSlider'
 import ProjectPopupDescription from './ProjectPopupDescription'
+import useWindowSize from '../custom-hooks/useWindowSize'
 
 interface Props {
 	setPopupStatus: Dispatch<SetStateAction<string>>
@@ -31,6 +32,9 @@ const ProjectPopup = () => {
 		if (popupStatus) closePopup()
 	})
 
+	const windowSize = useWindowSize()
+	console.log(windowSize.width)
+
 	return (
 		<>
 			{/* Low Opacity Background */}
@@ -43,7 +47,7 @@ const ProjectPopup = () => {
 			/>
 			{/* White Background of Popup */}
 			<div
-				className={`fixed grid  h-[47rem] w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-gray-700 items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
+				className={`fixed grid h-fit w-[95vw] md:h-[47rem] md:w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-gray-700 items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
 					popupStatus
 						? ' opacity-100'
 						: ' opacity-0 pointer-events-none duration-0'
@@ -54,7 +58,7 @@ const ProjectPopup = () => {
 					icon={ic_close}
 					size={40}
 					onClick={closePopup}
-					className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 w-fit h-fit absolute top-6 right-4 z-20`}
+					className={`hover:text-mainOrange border border-accentGrey rounded-full bg-accentGrey  cursor-pointer transition-colors ease-in-out duration-300 w-fit h-fit absolute top-6 right-4 z-20`}
 				/>
 				<ImageSlider />
 				<ProjectPopupDescription />
