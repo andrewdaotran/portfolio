@@ -42,8 +42,8 @@ export interface NavbarStatusContextTypes {
 }
 
 export interface ProjectPopupContextTypes {
-	popupStatus: string
-	setPopupStatus: Dispatch<SetStateAction<string>>
+	popupStatus: boolean
+	setPopupStatus: Dispatch<SetStateAction<boolean>>
 	popupData: Project
 	setPopupData: Dispatch<
 		SetStateAction<{

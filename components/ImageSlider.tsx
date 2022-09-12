@@ -22,10 +22,6 @@ const ImageSlider = () => {
 		setCurrentImage(
 			currentImage === 0 ? popupData.images.length - 1 : currentImage - 1
 		)
-		// if (currentImage === 0) {
-		// 	setCurrentImage(popupData.images.length - 1)
-		// }
-		// setCurrentImage(currentImage - 1)
 	}
 
 	const handleIncrementCurrentImage = () => {
@@ -33,10 +29,6 @@ const ImageSlider = () => {
 		setCurrentImage(
 			currentImage === popupData.images.length - 1 ? 0 : currentImage + 1
 		)
-		// if (currentImage === popupData.images.length - 1) {
-		// 	setCurrentImage(0)
-		// }
-		// setCurrentImage(currentImage + 1)
 	}
 
 	return (
@@ -68,21 +60,23 @@ const ImageSlider = () => {
 				onClick={handleIncrementCurrentImage}
 			/>
 			{/* Circle buttons under image */}
-			<div className='absolute flex bottom-1 translate-x-[-50%] left-[50%] z-[110] gap-4'>
-				{popupData.images.map((image, index) => {
-					return (
-						<div
-							className={`cursor-pointer transition-all ease-in-out duration-500 ${
-								currentImage === index ? 'text-mainOrange' : 'text-gray-300'
-							}`}
-							key={image}
-							onClick={() => setCurrentImage(index)}
-						>
-							<Icon size={12} icon={ic_circle} />
-						</div>
-					)
-				})}
-			</div>
+			{popupData.images.length > 1 && (
+				<div className='absolute flex bottom-1 translate-x-[-50%] left-[50%] z-[110] gap-4'>
+					{popupData.images.map((image, index) => {
+						return (
+							<div
+								className={`cursor-pointer transition-all ease-in-out duration-500 ${
+									currentImage === index ? 'text-mainOrange' : 'text-gray-300'
+								}`}
+								key={image}
+								onClick={() => setCurrentImage(index)}
+							>
+								<Icon size={12} icon={ic_circle} />
+							</div>
+						)
+					})}
+				</div>
+			)}
 		</div>
 	)
 }

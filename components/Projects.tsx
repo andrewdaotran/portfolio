@@ -7,9 +7,6 @@ import ProjectPopupContext from '../context/ProjectPopupContext'
 import { ProjectPopupContextTypes } from '../typings'
 
 const Projects = () => {
-	const { popupStatus, setPopupStatus, popupData, setPopupData } =
-		useContext<ProjectPopupContextTypes>(ProjectPopupContext)
-	// console.log(popupData)
 	return (
 		<div className={`border-b border-black mx-4 relative bg-white `}>
 			<ProjectPopup />
@@ -24,8 +21,6 @@ const Projects = () => {
 							project={project}
 							key={project.title}
 							index={index}
-							setPopupStatus={setPopupStatus}
-							setPopupData={setPopupData}
 						/>
 					)
 				})}

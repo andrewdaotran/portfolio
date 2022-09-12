@@ -3,7 +3,7 @@ import { createContext, useState } from 'react'
 const ProjectPopupContext = createContext()
 
 export const ProjectPopupProvider = ({ children }) => {
-	const [popupStatus, setPopupStatus] = useState('')
+	const [popupStatus, setPopupStatus] = useState(false)
 	const [popupData, setPopupData] = useState({
 		title: '',
 		description: '',
@@ -14,8 +14,9 @@ export const ProjectPopupProvider = ({ children }) => {
 		page: '',
 	})
 	const closePopup = () => {
-		setPopupStatus('')
+		setPopupStatus(false)
 		setTimeout(() => {
+			if (popupStatus) return
 			setPopupData({
 				title: '',
 				description: '',
@@ -25,7 +26,7 @@ export const ProjectPopupProvider = ({ children }) => {
 				github: '',
 				page: '',
 			})
-		}, 700)
+		}, 600)
 	}
 
 	return (

@@ -10,15 +10,11 @@ import useWindowSize from '../custom-hooks/useWindowSize'
 
 const Sidebar = () => {
 	const windowSize = useWindowSize()
-	console.log(windowSize.width)
 	const {
 		homeStatus,
 		portfolioStatus,
 		aboutMeStatus,
 		menuClicked,
-		setHomeStatus,
-		setPortfolioStatus,
-		setAboutMeStatus,
 		setMenuClicked,
 	} = useContext<NavbarStatusContextTypes>(NavbarStatusContext)
 

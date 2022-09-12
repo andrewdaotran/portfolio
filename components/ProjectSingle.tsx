@@ -1,41 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Icon } from 'react-icons-kit'
 import { externalLink } from 'react-icons-kit/fa/externalLink'
 import { github } from 'react-icons-kit/fa/github'
 import { useInView } from 'react-intersection-observer'
+import ProjectPopupContext from '../context/ProjectPopupContext'
 
 import useWindowSize from '../custom-hooks/useWindowSize'
-import { Project } from '../typings'
+import { Project, ProjectPopupContextTypes } from '../typings'
 
 interface Props {
 	project: Project
 	index: number
-	setPopupStatus: Dispatch<SetStateAction<string>>
-	setPopupData: Dispatch<
-		SetStateAction<{
-			title: string
-			description: string
-			images: any[]
-			technologies: any[]
-			url: string
-			github: string
-		}>
-	>
 }
 
-const ProjectSingle = ({
-	project,
-	index,
-	setPopupStatus,
-	setPopupData,
-}: Props) => {
+const ProjectSingle = ({ project, index }: Props) => {
+	const { setPopupStatus, setPopupData } =
+		useContext<ProjectPopupContextTypes>(ProjectPopupContext)
 	const windowSize = useWindowSize()
 	const [shown, setShown] = useState<boolean>(false)
 
 	const handleOpenProjectPopup = (e) => {
-		setPopupStatus(project.title)
+		setPopupStatus(true)
 		setPopupData(project)
 	}
 
@@ -45,6 +32,7 @@ const ProjectSingle = ({
 			setShown(true)
 		}
 	}, [inView, shown])
+
 	return windowSize.width < 640 ? (
 		// Small Version
 		<div
@@ -89,20 +77,26 @@ const ProjectSingle = ({
 					})}
 				</div>
 				<div className='flex gap-6 pointer-events-auto'>
-					<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
-						<Link href={`/`}>
+					<h3
+						className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 `}
+					>
+						<Link href={project.github}>
 							<a target='_blank' rel='noopener noreferrer'>
 								<Icon icon={github} size={25} />
 							</a>
 						</Link>
 					</h3>
-					<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
-						<Link href={`/`}>
-							<a target='_blank' rel='noopener noreferrer'>
-								<Icon icon={externalLink} size={25} />
-							</a>
-						</Link>
-					</h3>
+					{project.url && (
+						<h3
+							className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 `}
+						>
+							<Link href={project.url && project.url}>
+								<a target='_blank' rel='noopener noreferrer'>
+									<Icon icon={externalLink} size={25} />
+								</a>
+							</Link>
+						</h3>
+					)}
 				</div>
 			</div>
 		</div>
@@ -153,8 +147,8 @@ const ProjectSingle = ({
 						}`}
 					>
 						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
-							<Link href={`/`}>
-								<a>
+							<Link href={project.github}>
+								<a target='_blank' rel='noopener noreferrer'>
 									<Icon
 										icon={github}
 										size={
@@ -168,25 +162,28 @@ const ProjectSingle = ({
 								</a>
 							</Link>
 						</h3>
-						<h3 className='hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '>
-							<Link href={`/`}>
-								<a>
-									<Icon
-										icon={externalLink}
-										size={
-											windowSize.width < 1024
-												? 25
-												: windowSize.width < 1280
-												? 30
-												: 35
-										}
-									/>
-								</a>
-							</Link>
-						</h3>
+						{project.url && (
+							<h3
+								className={`hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 `}
+							>
+								<Link href={project.url && project.url}>
+									<a target='_blank' rel='noopener noreferrer'>
+										<Icon
+											icon={externalLink}
+											size={
+												windowSize.width < 1024
+													? 25
+													: windowSize.width < 1280
+													? 30
+													: 35
+											}
+										/>
+									</a>
+								</Link>
+							</h3>
+						)}
 					</div>
 				</div>
-				{/* <Link href={'/'}> */}
 				<div
 					className={`opacity-50 hover:opacity-100 transition-opacity ease-in duration-[300ms] ${
 						index % 2 === 0 ? 'col-start-1 col-end-4' : 'col-start-3 col-end-6'

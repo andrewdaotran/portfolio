@@ -20,8 +20,8 @@ export const projectPages = [
 			'Context API',
 			'PetFinder API',
 		],
-		url: '/',
-		github: '/',
+		url: '',
+		github: 'https://github.com/andrewdaotran/find-my-pet',
 		page: '/',
 	},
 	{
@@ -36,8 +36,8 @@ export const projectPages = [
 			'Redux Toolkit',
 			'Material UI',
 		],
-		url: '/',
-		github: '/',
+		url: '',
+		github: 'https://github.com/andrewdaotran/dnd-player-sheet',
 		page: '/',
 	},
 	{
@@ -46,9 +46,9 @@ export const projectPages = [
 			'Personal passion project fusing both of my loves in life, photography and coding. Photography blog utilizing React to design the front end and Sanity.io as the headless CMS',
 		images: ['/photography_blog.png'],
 		technologies: ['NextJS', 'Sanity.io', 'TypeScript', 'TailwindCSS'],
-		url: '/',
-		github: '/',
-		page: '/',
+		url: 'https://ndru-web-dev-blog.vercel.app/',
+		github: 'https://github.com/andrewdaotran/blog-dev-journey',
+		page: '',
 	},
 	{
 		title: 'The District Eye Care Landing Page',
@@ -56,9 +56,9 @@ export const projectPages = [
 			'Conducted UX heuristic evaluation to redesign The District Eye Care site with a mobile first approach and focused on readability and accessibility ',
 		images: ['/district_eye.png'],
 		technologies: ['NextJS', 'TailwindCSS'],
-		url: '/',
-		github: '/',
-		page: '/',
+		url: 'https://district-eye-landing-page.vercel.app/',
+		github: 'https://github.com/andrewdaotran/district-eye-landing-page',
+		page: '',
 	},
 ]
 
