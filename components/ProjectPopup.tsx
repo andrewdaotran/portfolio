@@ -32,9 +32,6 @@ const ProjectPopup = () => {
 		if (popupStatus) closePopup()
 	})
 
-	const windowSize = useWindowSize()
-	console.log(windowSize.width)
-
 	return (
 		<>
 			{/* Low Opacity Background */}
@@ -45,9 +42,9 @@ const ProjectPopup = () => {
 						: ' opacity-0 pointer-events-none'
 				}`}
 			/>
-			{/* White Background of Popup */}
+			{/* Background of Popup */}
 			<div
-				className={`fixed grid h-fit w-[95vw] md:h-[47rem] md:w-[44.5rem]   top-[41%] translate-y-[-50%] left-[50%] translate-x-[-50%] bg-gray-700 items-start justify-items-center z-[100] transition-all ease-in-out duration-700 ${
+				className={` fixed grid h-fit w-[95vw] md:h-[47rem] md:w-[44.5rem] top-2 sm:top-[41%] sm:translate-y-[-50%] left-[50%] translate-x-[-50%] bg-gray-700 items-start justify-items-center z-[100] transition-all ease-in-out duration-700  ${
 					popupStatus
 						? ' opacity-100'
 						: ' opacity-0 pointer-events-none duration-0'
