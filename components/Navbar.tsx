@@ -70,7 +70,9 @@ const Navbar = ({ children }) => {
 						})}
 					</div>
 				)}
-				<h3 className='  text-center col-start-2 col-end-3 z-50'>ndru</h3>
+				<h3 className='  text-center text-xl col-start-2 col-end-3 z-50'>
+					ndru.
+				</h3>
 				{windowSize.width > 767 && (
 					<div className='flex gap-8 col-start-3 col-end-4  w-fit justify-self-end'>
 						{iconLinks.map((link) => {

@@ -1,16 +1,12 @@
 import Image from 'next/image'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Icon from 'react-icons-kit'
 import { chevronLeft } from 'react-icons-kit/fa/chevronLeft'
 import { chevronRight } from 'react-icons-kit/fa/chevronRight'
 import { ic_circle } from 'react-icons-kit/md/ic_circle'
 
 import ProjectPopupContext from '../context/ProjectPopupContext'
-import { Project, ProjectPopupContextTypes } from '../typings'
-
-interface Props {
-	project: Project
-}
+import { ProjectPopupContextTypes } from '../typings'
 
 const ImageSlider = () => {
 	const [currentImage, setCurrentImage] = useState<number>(0)
@@ -31,14 +27,24 @@ const ImageSlider = () => {
 		)
 	}
 
+	// Reset currentImage when close ProjectPopup
+	useEffect(() => {
+		if (popupStatus === false) {
+			setTimeout(() => {
+				setCurrentImage(0)
+			}, 700)
+		}
+	}, [popupStatus])
+
 	return (
-		<div className=' grid grid-cols-5 grid-rows-6 md:flex items-center  gap-2 py-4  md:py-9 relative justify-items-center '>
+		<div className=' grid grid-cols-5 grid-rows-6 md:flex items-center  gap-2 pt-4 pb-10  md:py-9 relative justify-items-center '>
 			<Icon
 				icon={chevronLeft}
 				size={30}
 				// onClick={closePopup}
-				className={`cursor-pointer w-fit h-fit bg-gray-300 p-3 col-start-2 col-end-3 ${
-					popupData.images.length === 1 && 'opacity-50 cursor-default'
+				className={`cursor-pointer w-fit h-fit bg-gray-300  p-3 col-start-2 col-end-3 ${
+					popupData.images.length === 1 &&
+					'opacity-50 cursor-default text-gray-400'
 				}`}
 				onClick={handleDecrementCurrentImage}
 			/>
@@ -54,8 +60,9 @@ const ImageSlider = () => {
 				icon={chevronRight}
 				size={30}
 				// onClick={closePopup}
-				className={`cursor-pointer t w-fit h-fit bg-gray-300 p-3 col-start-4 col-end-5  ${
-					popupData.images.length === 1 && 'opacity-50 cursor-default'
+				className={`cursor-pointer t w-fit h-fit  bg-gray-300 p-3 col-start-4 col-end-5  ${
+					popupData.images.length === 1 &&
+					'opacity-50 cursor-default text-gray-400'
 				}`}
 				onClick={handleIncrementCurrentImage}
 			/>

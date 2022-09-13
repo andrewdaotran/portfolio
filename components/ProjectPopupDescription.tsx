@@ -37,10 +37,13 @@ const ProjectPopupDescription = () => {
 			)}
 
 			<div className='flex gap-4'>
-				<button className=' text-sm w-fit px-4 py-2 flex justify-center items-center gap-3 bg-mainOrange  border-mainOrange border text-white mt-4 hover:text-black  hover:bg-white transition-colors  ease-in-out duration-300 cursor-pointer tracking-wide'>
-					<Icon size={15} icon={externalLink} />
-					VIEW SITE
-				</button>
+				{popupData.url && (
+					<button className=' text-sm w-fit px-4 py-2 flex justify-center items-center gap-3 bg-mainOrange  border-mainOrange border text-white mt-4 hover:text-black  hover:bg-white transition-colors  ease-in-out duration-300 cursor-pointer tracking-wide'>
+						<Icon size={15} icon={externalLink} />
+						VIEW SITE
+					</button>
+				)}
+
 				<Link href={popupData.page}>
 					<button
 						className=' text-sm w-fit px-4 py-2 flex justify-center items-center gap-3 bg-accentGrey  border-accentGrey border text-black mt-4  hover:border-accentGrey hover:bg-white transition-colors  ease-in-out duration-300 cursor-pointer tracking-wide '

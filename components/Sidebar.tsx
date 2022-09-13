@@ -64,7 +64,9 @@ const Sidebar = () => {
 				<div className=' grid gap-16 pt-4 '>
 					{/* Top plus X */}
 					<div className='flex justify-between  items-center'>
-						<h3>sidebar</h3>
+						{/* <h3>sidebar</h3> */}
+						{/* Empty div to push X icon to right */}
+						<div className='w-2' />
 						<div
 							className=' hover:text-mainOrange cursor-pointer transition-colors ease-in-out duration-300 '
 							onClick={handleCloseSidebar}
