@@ -7,9 +7,11 @@ export const projectPages = [
 		description:
 			'Full-stack web application to reunite users to their lost pets, queries PetFinder API to display adoptable pets in the US ',
 		images: [
-			'/find_my_pet.png',
-			'/dungeons_and_dragons.png',
-			'/photography_blog.png',
+			'/find-my-pet/fmp-1.png',
+			'/find-my-pet/fmp-2.png',
+			'/find-my-pet/fmp-3.png',
+			'/find-my-pet/fmp-4.png',
+			'/find-my-pet/fmp-5.png',
 		],
 		technologies: [
 			'NextJS',
@@ -28,7 +30,13 @@ export const projectPages = [
 		title: 'Dungeons and Dragons Player Sheet',
 		description:
 			'React and Node.js CRUD application that enables users to electronically create and edit dungeons and dragons player sheets for a seamless, and clean gameplay experience',
-		images: ['/dungeons_and_dragons.png'],
+		images: [
+			'/dnd/dnd-1.png',
+			'/dnd/dnd-2.png',
+			'/dnd/dnd-3.png',
+			'/dnd/dnd-4.png',
+			'/dnd/dnd-5.png',
+		],
 		technologies: [
 			'ReactJS',
 			'MongoDB',
@@ -54,7 +62,12 @@ export const projectPages = [
 		title: 'The District Eye Care Landing Page',
 		description:
 			'Conducted UX heuristic evaluation to redesign The District Eye Care site with a mobile first approach and focused on readability and accessibility ',
-		images: ['/district_eye.png'],
+		images: [
+			'/district/district-1.png',
+			'/district/district-2.png',
+			'/district/district-3.png',
+			'/district/district-4.png',
+		],
 		technologies: ['NextJS', 'TailwindCSS'],
 		url: 'https://district-eye-landing-page.vercel.app/',
 		github: 'https://github.com/andrewdaotran/district-eye-landing-page',
