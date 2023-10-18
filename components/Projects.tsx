@@ -3,6 +3,7 @@ import ProjectSingle from './ProjectSingle'
 import { projectPages } from '../utils'
 
 const Projects = () => {
+	// delete, just for deployment
 	return (
 		<div className={`border-b border-black mx-4 relative bg-white `}>
 			<ProjectPopup />
